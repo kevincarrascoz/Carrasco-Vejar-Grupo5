@@ -98,7 +98,9 @@ public class Servidor {
 						
 						Servidor s = new Servidor();
 						//System.out.println(s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt"));
-
+						String Direcciontxt="/mnt/c/Users/kvn_9/Documents/Carrasco-Vejar-Grupo5/horoscopo.txt";
+						//Direccion del txt kevin "/mnt/c/Users/kvn_9/Documents/Carrasco-Vejar-Grupo5/horoscopo.txt"
+						//Direccion del txt alejandro "/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt"
 						while ((entradaRemota = mensajeEntradaAlServidor.readUTF()) != null) {
 							System.out.println("Llego desde el cliente el mensaje --> " +entradaRemota);
 							entradaRemota= entradaRemota.substring(0, 1).toUpperCase()+entradaRemota.substring(1,entradaRemota.length()).toLowerCase();
@@ -106,51 +108,51 @@ public class Servidor {
 							
 							switch (entradaRemota) {
 								case "Aries":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 2, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 2, entradaRemota);
 									break;
 
 								case "Tauro":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 6, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 6, entradaRemota);
 									break;	
 
 								case "Geminis":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 10, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 10, entradaRemota);
 									break;	
 								
 								case "Cancer":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 14, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 14, entradaRemota);
 									break;
 
 								case "Leo":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 18, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 18, entradaRemota);
 									break;	
 
 								case "Virgo":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 22, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 22, entradaRemota);
 									break;	
 
 								case "Libra":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 26, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 26, entradaRemota);
 									break;
 
 								case "Escorpio":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 30, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 30, entradaRemota);
 									break;	
 
 								case "Sagitario":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 34, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 34, entradaRemota);
 									break;	
 								
 								case "Capricornio":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 38, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 38, entradaRemota);
 									break;
 
 								case "Acuario":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 42, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 42, entradaRemota);
 									break;	
 
 								case "Piscis":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 46, entradaRemota);
+									entradaRemota=s.leerTxt(Direcciontxt, 46, entradaRemota);
 									break;
 									
 								default:
