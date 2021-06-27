@@ -39,23 +39,27 @@ public class Cliente {
 
     entradaRemota = mensajeEntradaAlCliente.readUTF();
     System.out.println("Mensaje del servidor --> " +entradaRemota);
-    System.out.println("Escriba un mensaje al servidor y presiones ENTER. ");
+     System.out.println("Servicio de Horoscopo");
+    System.out.println("Si quieres saber tu horoscopo para lo proximos tres dias, escribe tu signo zodiacal y presiona ENTER. ");
 
     while (iterar) {
 
       try {
       mensajeEscritoPorElUsuario = entradaEstandar.readLine();
-      if (mensajeEscritoPorElUsuario != null && !mensajeEscritoPorElUsuario.equals("chao")) {
+      if (mensajeEscritoPorElUsuario != null && !mensajeEscritoPorElUsuario.equals("adios")) {
         mensajeSalidaDelCliente.writeUTF(mensajeEscritoPorElUsuario);
         entradaRemota=mensajeEntradaAlCliente.readUTF();
         System.out.println(entradaRemota);
+        System.out.println();
+        System.out.println("Si quieres saber acerca de otro signo debes escribirlo y presionar ENTER");
+        System.out.println("Si no quieres realizar mas consultas, escribe adios");
       } else {
         iterar=false;
       }
       
       
       }catch (IOException e) {
-						System.out.println("Conexion con el servidor con IP: " + servidorIP + ", al puerto: " + servicioPuerto + " se desconecto.");
+						System.out.println("Conexion con el servidor con IP: " + servidorIP + ", al puerto: " + servicioPuerto + " se ha perdido ya que el servidor se ha apagado.");
 						mensajeSalidaDelCliente.close();
 						mensajeEntradaAlCliente.close();
 						clienteSocket.close();
