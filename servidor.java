@@ -6,7 +6,33 @@ public class Servidor {
 
 	static ServerSocket servidorSocket = null;
 
+	public String leerTxt(String directorio){
+		String texto= "";
+
+		try {
+			FileReader f = new FileReader(directorio);
+			BufferedReader b = new BufferedReader(f);
+			String temp = "";
+			String bf = "";
+
+			while((bf = b.readLine()) != null){
+				temp = temp + bf;	
+			}
+
+			texto = temp;
+
+			
+		} catch (Exception e) {
+			System.err.println("No se logro leer el archivo");
+		}
+
+		return texto;
+	}
+
 	public static void main(String[] args) throws IOException {
+
+		
+		
 
 		if (args.length != 1) { //si hay más de 1 parámetro
 			System.out.println("Ingresar solo 1 argumento, el número del puerto donde el servicio esta escuchando.");
@@ -56,6 +82,9 @@ public class Servidor {
 
 						mensajeSalidaDelServidor.writeUTF("El servidor dice que esta OK para recibir mensajes...");
 						System.out.println("Esperando mensajes de desde el cliente ...");
+						
+						Servidor s = new Servidor();
+						System.out.println(s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt"));
 
 						while ((entradaRemota = mensajeEntradaAlServidor.readUTF()) != null) {
 							System.out.println("Llego desde el cliente el mensaje --> " +entradaRemota);
