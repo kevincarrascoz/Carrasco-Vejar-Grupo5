@@ -46,7 +46,7 @@ public class Cliente {
       if (mensajeEscritoPorElUsuario != null && !mensajeEscritoPorElUsuario.equals("chao")) {
         mensajeSalidaDelCliente.writeUTF(mensajeEscritoPorElUsuario);
         entradaRemota=mensajeEntradaAlCliente.readUTF();
-        System.out.println("Mensaje del servidor --> " +entradaRemota);
+        System.out.println(entradaRemota);
       } else {
         iterar=false;
       }

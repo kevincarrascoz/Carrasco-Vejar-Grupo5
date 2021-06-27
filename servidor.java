@@ -1,25 +1,38 @@
 import java.net.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Servidor {
 
 	static ServerSocket servidorSocket = null;
 
-	public String leerTxt(String directorio){
+	public String leerTxt(String directorio, Integer linea, String signo){
 		String texto= "";
 
 		try {
+			Date date = new Date();
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			//System.out.println("Fecha: "+dateFormat.format(date));
+
 			FileReader f = new FileReader(directorio);
 			BufferedReader b = new BufferedReader(f);
 			String temp = "";
 			String bf = "";
 
-			while((bf = b.readLine()) != null){
+			/* while((bf = b.readLine()) != null){
 				temp = temp + bf;	
-			}
+			} */
 
-			texto = temp;
+			//texto = temp;
+
+			for(int i=0; i<linea-1; i++)
+				b.readLine();
+			texto = "Horoscopo para "+signo+" "+dateFormat.format(date)+"\n"+"Hoy : "+b.readLine()+"\n";
+			texto = texto+"Mañana: "+b.readLine()+"\n";
+			texto = texto+"Pasado mañana: "+b.readLine();
 
 			
 		} catch (Exception e) {
@@ -84,11 +97,71 @@ public class Servidor {
 						System.out.println("Esperando mensajes de desde el cliente ...");
 						
 						Servidor s = new Servidor();
-						System.out.println(s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt"));
+						//System.out.println(s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt"));
 
 						while ((entradaRemota = mensajeEntradaAlServidor.readUTF()) != null) {
 							System.out.println("Llego desde el cliente el mensaje --> " +entradaRemota);
-							mensajeSalidaDelServidor.writeUTF("mensaje <<" + entradaRemota + ">> recibido.");
+							entradaRemota= entradaRemota.substring(0, 1).toUpperCase()+entradaRemota.substring(1,entradaRemota.length()).toLowerCase();
+							//System.out.println("asi quedo --> " +entradaRemota);
+							
+							switch (entradaRemota) {
+								case "Aries":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 2, entradaRemota);
+									break;
+
+								case "Tauro":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 6, entradaRemota);
+									break;	
+
+								case "Geminis":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 10, entradaRemota);
+									break;	
+								
+								case "Cancer":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 14, entradaRemota);
+									break;
+
+								case "Leo":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 18, entradaRemota);
+									break;	
+
+								case "Virgo":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 22, entradaRemota);
+									break;	
+
+								case "Libra":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 26, entradaRemota);
+									break;
+
+								case "Escorpio":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 30, entradaRemota);
+									break;	
+
+								case "Sagitario":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 34, entradaRemota);
+									break;	
+								
+								case "Capricornio":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 38, entradaRemota);
+									break;
+
+								case "Acuario":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 42, entradaRemota);
+									break;	
+
+								case "Piscis":
+									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 46, entradaRemota);
+									break;
+									
+								default:
+									System.out.println("Signo invalido: "+entradaRemota);
+									entradaRemota = "Signo invalido: "+entradaRemota;
+									break;
+							}
+
+							mensajeSalidaDelServidor.writeUTF(entradaRemota);
+							
+
 
 						}
 					} catch (IOException e) {
