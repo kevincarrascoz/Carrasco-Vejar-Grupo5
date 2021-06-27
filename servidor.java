@@ -30,8 +30,8 @@ public class Servidor {
 
 			for(int i=0; i<linea-1; i++)
 				b.readLine();
-			texto = "Horoscopo para "+signo+" "+dateFormat.format(date)+"\n"+"Hoy : "+b.readLine()+"\n";
-			texto = texto+"Mañana: "+b.readLine()+"\n";
+			texto = "Horoscopo para "+signo+" "+dateFormat.format(date)+"\n\n"+"Hoy : "+b.readLine()+"\n\n";
+			texto = texto+"Mañana: "+b.readLine()+"\n\n";
 			texto = texto+"Pasado mañana: "+b.readLine();
 
 			
