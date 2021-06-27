@@ -7,9 +7,9 @@ muio mala suerte
 buena suerte
 pesima suerte
 [Geminis]
-nose 
-que
-poner
+hola
+texto
+prueba
 [Cancer]
 rellenando
 namais
