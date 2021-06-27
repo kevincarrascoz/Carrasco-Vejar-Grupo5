@@ -42,6 +42,8 @@ public class Cliente {
     System.out.println("Escriba un mensaje al servidor y presiones ENTER. ");
 
     while (iterar) {
+
+      try {
       mensajeEscritoPorElUsuario = entradaEstandar.readLine();
       if (mensajeEscritoPorElUsuario != null && !mensajeEscritoPorElUsuario.equals("chao")) {
         mensajeSalidaDelCliente.writeUTF(mensajeEscritoPorElUsuario);
@@ -50,6 +52,15 @@ public class Cliente {
       } else {
         iterar=false;
       }
+      
+      
+      }catch (IOException e) {
+						System.out.println("Conexion con el servidor con IP: " + servidorIP + ", al puerto: " + servicioPuerto + " se desconecto.");
+						mensajeSalidaDelCliente.close();
+						mensajeEntradaAlCliente.close();
+						clienteSocket.close();
+						//e.printStackTrace();
+					}
     }
     System.out.println("Desconectandose del servidor ...");
     mensajeSalidaDelCliente.close();
