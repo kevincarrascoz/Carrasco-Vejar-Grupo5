@@ -106,7 +106,7 @@ public class Servidor {
 							
 							switch (entradaRemota) {
 								case "Aries":
-									entradaRemota=s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt", 2, entradaRemota);
+									entradaRemota=s.leerTxt("/mnt/c/Users/kvn_9/Documents/Carrasco-Vejar-Grupo5/horoscopo.txt", 2, entradaRemota);
 									break;
 
 								case "Tauro":
