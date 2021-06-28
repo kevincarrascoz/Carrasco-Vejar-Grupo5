@@ -6,7 +6,7 @@ public class Cliente {
   public static void main(String[] args) throws IOException{
 
     if (args.length != 2) { //si hay más de 1 parámetro
-			System.out.println("Ingresar solo 2 argumento, la IP del servidor y el PUERTO del servicio.");
+			System.out.println("Ingresar solo 2 argumentos, la IP del servidor y el PUERTO del servicio.");
 			System.exit(-1);
 		} else {
 		    System.out.println("El cliente se va a conectar al servidor " + args[0] + " en el puerto " + args[1]+" ...");
@@ -39,27 +39,27 @@ public class Cliente {
 
     entradaRemota = mensajeEntradaAlCliente.readUTF();
     System.out.println("Mensaje del servidor --> " +entradaRemota);
-     System.out.println("Servicio de Horoscopo");
-    System.out.println("Si quieres saber tu horoscopo para lo proximos tres dias, escribe tu signo zodiacal y presiona ENTER. ");
+     System.out.println("\nServicio de Horóscopo");
+    System.out.println("Para conocer tu horóscopo para los siguientes tres días, ingresa tu signo zodiacal y presiona ENTER.\n");
 
     while (iterar) {
 
       try {
       mensajeEscritoPorElUsuario = entradaEstandar.readLine();
-      if (mensajeEscritoPorElUsuario != null && !mensajeEscritoPorElUsuario.equals("adios")) {
+      if (mensajeEscritoPorElUsuario != null && !mensajeEscritoPorElUsuario.equals("desconectar")) {
         mensajeSalidaDelCliente.writeUTF(mensajeEscritoPorElUsuario);
         entradaRemota=mensajeEntradaAlCliente.readUTF();
         System.out.println(entradaRemota);
         System.out.println();
-        System.out.println("Si quieres saber acerca de otro signo debes escribirlo y presionar ENTER");
-        System.out.println("Si no quieres realizar mas consultas, escribe adios");
+        System.out.println("Si quieres consultar el horóscopo para otro signo, ingresalo y presionar ENTER");
+        System.out.println("Si no quieres realizar mas consultas, escribe 'desconectar'");
       } else {
         iterar=false;
       }
       
       
       }catch (IOException e) {
-						System.out.println("Conexion con el servidor con IP: " + servidorIP + ", al puerto: " + servicioPuerto + " se ha perdido ya que el servidor se ha apagado.");
+						System.out.println("Conexion con el servidor con IP: " + servidorIP + ", al puerto: " + servicioPuerto + " se ha perdido ya que el servidor se ha desconectado.");
 						mensajeSalidaDelCliente.close();
 						mensajeEntradaAlCliente.close();
 						clienteSocket.close();

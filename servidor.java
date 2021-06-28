@@ -10,45 +10,32 @@ public class Servidor {
 	static ServerSocket servidorSocket = null;
 
 	public String leerTxt(String directorio, Integer linea, String signo){
+		
 		String texto= "";
-
 		try {
 			Date date = new Date();
 			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			//System.out.println("Fecha: "+dateFormat.format(date));
-
 			FileReader f = new FileReader(directorio);
 			BufferedReader b = new BufferedReader(f);
 			String temp = "";
 			String bf = "";
-
-			/* while((bf = b.readLine()) != null){
-				temp = temp + bf;	
-			} */
-
-			//texto = temp;
-
 			for(int i=0; i<linea-1; i++)
 				b.readLine();
-			texto = "Horoscopo para "+signo+" "+dateFormat.format(date)+"\n\n"+"Hoy : "+b.readLine()+"\n\n";
+			texto = "Horóscopo para "+signo+" "+dateFormat.format(date)+"\n\n"+"Hoy : "+b.readLine()+"\n\n";
 			texto = texto+"Mañana: "+b.readLine()+"\n\n";
 			texto = texto+"Pasado mañana: "+b.readLine();
-
-			
 		} catch (Exception e) {
-			System.err.println("No se logro leer el archivo");
+			System.err.println("No se logró leer el archivo");
 		}
 
 		return texto;
+
 	}
 
 	public static void main(String[] args) throws IOException {
 
-		
-		
-
 		if (args.length != 1) { //si hay más de 1 parámetro
-			System.out.println("Ingresar solo 1 argumento, el número del puerto donde el servicio esta escuchando.");
+			System.out.println("Ingresar solo 1 argumento, el número del puerto donde el servicio está escuchando.");
 			System.exit(-1);
 		} else {
 		    System.out.println("El servicio se va a configurar en el puerto " + args[0]+" ...");
@@ -98,7 +85,7 @@ public class Servidor {
 						
 						Servidor s = new Servidor();
 						//System.out.println(s.leerTxt("/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt"));
-						String Direcciontxt="/mnt/c/Users/kvn_9/Documents/Carrasco-Vejar-Grupo5/horoscopo.txt";
+						String Direcciontxt="/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt";
 						//Direccion del txt kevin "/mnt/c/Users/kvn_9/Documents/Carrasco-Vejar-Grupo5/horoscopo.txt"
 						//Direccion del txt alejandro "/mnt/f/Carrasco-Vejar-Grupo5/horoscopo.txt"
 						while ((entradaRemota = mensajeEntradaAlServidor.readUTF()) != null) {
@@ -156,8 +143,8 @@ public class Servidor {
 									break;
 									
 								default:
-									System.out.println("Signo invalido: "+entradaRemota);
-									entradaRemota = "Signo invalido: "+entradaRemota;
+									System.out.println("Signo inválido: "+entradaRemota);
+									entradaRemota = "Signo inválido: "+entradaRemota;
 									break;
 							}
 
@@ -167,7 +154,7 @@ public class Servidor {
 
 						}
 					} catch (IOException e) {
-						System.out.println("Cliente " +clienteSocket.getInetAddress()+ " se desconecto.");
+						System.out.println("Cliente " +clienteSocket.getInetAddress()+ " se desconectó.");
 						mensajeSalidaDelServidor.close();
 						mensajeEntradaAlServidor.close();
 						clienteSocket.close();
